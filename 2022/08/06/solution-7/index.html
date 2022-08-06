@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Robot in a Hallway 题解（补题） | Blog of Guo12181</title><meta name="keywords" content="思维,动态规划"><meta name="author" content="Guo12181"><meta name="copyright" content="Guo12181"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="出题人将2000难度的动态规划放在div2第三题直接暴杀">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Robot in a Hallway 题解（补题）">
+<meta property="og:url" content="http://example.com/2022/08/06/solution-7/index.html">
+<meta property="og:site_name" content="Blog of Guo12181">
+<meta property="og:description" content="出题人将2000难度的动态规划放在div2第三题直接暴杀">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/158976489.jpg">
+<meta property="article:published_time" content="2022-08-06T04:32:19.000Z">
+<meta property="article:modified_time" content="2022-08-06T15:10:05.608Z">
+<meta property="article:author" content="Guo12181">
+<meta property="article:tag" content="思维">
+<meta property="article:tag" content="动态规划">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/158976489.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/08/06/solution-7/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Robot in a Hallway 题解（补题）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-08-06 23:10:05'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/650ef39e1a171ec1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/158976489.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Blog of Guo12181</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Robot in a Hallway 题解（补题）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-08-06T04:32:19.000Z" title="发表于 2022-08-06 12:32:19">2022-08-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-08-06T15:10:05.608Z" title="更新于 2022-08-06 23:10:05">2022-08-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Robot in a Hallway 题解（补题）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1716/problem/C">原题链接</a></p>
+<h2 id="题目原文"><a href="#题目原文" class="headerlink" title="题目原文"></a>题目原文</h2><p>There is a grid, consisting of 2 rows and m columns. The rows are numbered from 1 to 2 from top to bottom. The columns are numbered from 1 to m from left to right.</p>
+<p>The robot starts in a cell (1,1). In one second, it can perform either of two actions:</p>
+<p>move into a cell adjacent by a side: up, right, down or left;<br>remain in the same cell.</p>
+<p>The robot is not allowed to move outside the grid.</p>
+<p>Initially, all cells, except for the cell (1,1), are locked. Each cell (i,j) contains a value a(i,j) — the moment that this cell gets unlocked. The robot can only move into a cell (i,j) if at least a(i,j) seconds have passed before the move.</p>
+<p>The robot should visit all cells without entering any cell twice or more (cell (1,1) is considered entered at the start). It can finish in any cell.</p>
+<p>What is the fastest the robot can achieve that?</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The first line contains a single integer t (1≤t≤10^4) — the number of testcases.</p>
+<p>The first line of each testcase contains a single integer m (2≤m≤2⋅105) — the number of columns of the grid.</p>
+<p>The i-th of the next 2 lines contains m integers a(i,1),a(i,2),…,a(i,m) (0≤ai,j≤10^9) — the moment of time each cell gets unlocked. a(1,1)&#x3D;0. If a(i,j)&#x3D;0, then cell (i,j) is unlocked from the start.</p>
+<p>The sum of m over all testcases doesn’t exceed 2⋅10^5.</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each testcase, print a single integer — the minimum amount of seconds that the robot can take to visit all cells without entering any cell twice or more.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">input</span><br><span class="line"></span><br><span class="line">4</span><br><span class="line">3</span><br><span class="line">0 0 1</span><br><span class="line">4 3 2</span><br><span class="line">5</span><br><span class="line">0 4 8 12 16</span><br><span class="line">2 6 10 14 18</span><br><span class="line">4</span><br><span class="line">0 10 10 10</span><br><span class="line">10 10 10 10</span><br><span class="line">2</span><br><span class="line">0 0</span><br><span class="line">0 0</span><br><span class="line"></span><br><span class="line">output</span><br><span class="line"></span><br><span class="line">5</span><br><span class="line">19</span><br><span class="line">17</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<p>time limit per test: 2 seconds</p>
+<p>memory limit per test: 256 megabytes</p>
+<p>input: standard input</p>
+<p>output: standard output</p>
+<hr>
+<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>给定2行m列的矩阵, 矩阵中每个元素都有一个”解锁时间”, 必须等待时间达到解锁时间后才能到达(不能在到达解锁时间的同时走上去), 从左上角开始, 每一分钟可以在矩阵内上下左右移动一格或者原地等待, 要求出能够经过所有元素<strong>一次且仅一次</strong>的路径的最短耗时(初始时时刻为0, 且左上角被认为已经走过)</p>
+<hr>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="事前"><a href="#事前" class="headerlink" title="事前"></a>事前</h3><p>这道题当时进行了思考但没有做出, 回头看一眼, 好家伙, div2第三题难度就2000, 超出博主当前的能力水平, 一反div2的友好常态, 跟第二题相比简直是质的飞跃, 看来是这次出题人大发慈悲(苦笑). 之后博主看官方题解发现自己的思路正确, 但在动态规划的实现中因为没有发现更多隐含的性质没法做出, 决定补题后写下这篇题解</p>
+<h3 id="切入点"><a href="#切入点" class="headerlink" title="切入点"></a>切入点</h3><p>可以注意到一旦往左或往右的一段路径达到2格就必须延此方向一直走到头, 否则会引发矛盾无法遍历所有格子, 换句话说, <strong>想要移动到另一行, 要么当前在第一列或最后一列, 要么当前在的那一列的左边所有格子都必须已经遍历过</strong>, 因此合法的路径被限定在以下两条规则中: </p>
+<ul>
+<li><p>1.先从起点出发向下, 沿S型路径前进若干格(也可以先不动)</p>
+</li>
+<li><p>2.向右一直走到头, 换行再折回来, 遍历所有未遍历的格子(简称迂回路径)</p>
+</li>
+</ul>
+<p>由此可以遍历所有可能的路径, 暴力遍历必然超时</p>
+<p>需要想到如何高效推算出各路径所花时间</p>
+<h3 id="大致思路"><a href="#大致思路" class="headerlink" title="大致思路"></a>大致思路</h3><p>每次求一遍路径耗时肯定超时, 我们可以把路径拆成两段: S型路径段和剩下的迂回路径段, 动态规划递推求出各迂回路径耗时, 从起点开始枚举每一个S路径段, 与对应的路径段拼接计算耗时, 此时还有一些问题没解决:</p>
+<ul>
+<li><p>1.怎么规范地求耗时</p>
+</li>
+<li><p>2.拼接路径后怎么计算耗时</p>
+</li>
+<li><p>3.迂回路径怎么表示和递推求解</p>
+</li>
+<li><p>4.拼接路径怎么对应</p>
+</li>
+</ul>
+<h3 id="路径耗时计算"><a href="#路径耗时计算" class="headerlink" title="路径耗时计算"></a>路径耗时计算</h3><p>一条固定的路径所花时间按模拟法求的话思考比较复杂, 可分为两部分: 移动时间(必然固定)和等待时间, 在之后的计算中两者完全分开直到求最终答案</p>
+<p>设路径上当前已等待总时间为t, 当前到了第k个格子, 其坐标为a[xk][yk]; 则必须t≥a[xk][yk]-k+1, t足够就不需要再等待, t不够就补上, 由此可以遍历完整路径后求出最小等待时间, 这也方便了之后的路径拼接</p>
+<h3 id="拼接路径"><a href="#拼接路径" class="headerlink" title="拼接路径"></a>拼接路径</h3><p>既然只用考虑等待时间了, 假设A路径长度为n1, 等待时间为mx1, B路径等待时间为n2, 等待时间为mx2, A终点可到达B起点, 注意到一条路径上小于最大值的等待时间相当于不用等, 而且拼接后B路径的等待时间中就免去了A路径的移动时间, 相当于补上B单独时没算的从A起点走过来的移动时间, 则拼接后等待时间为max(mx1,mx2-n1). (这样就免去了重新计算, 大大降低时间复杂度)</p>
+<h3 id="递推求迂回路径"><a href="#递推求迂回路径" class="headerlink" title="递推求迂回路径"></a>递推求迂回路径</h3><p>迂回路径耗时可以倒推, 是因为具有以下性质:</p>
+<p>假设 su[i][j] 表示从 a[i][j] 开始迂回路径到 a[3-i][j] 的最少等待时间, 注意到 su[i][j] 可由 a[i][j], su[i][j+1], a[3-i][j] 三部分推导出, 由拼接路径方式可得: </p>
+<ul>
+<li>su[i][j] &#x3D; max(a[i][j], su[i][j + 1] - 1, a[3-i][j] - (2 * (m - j + 1) - 1))</li>
+</ul>
+<p>由此即可递推求解, 注意其中减去的长度容易弄错</p>
+<h3 id="对应拼合路径"><a href="#对应拼合路径" class="headerlink" title="对应拼合路径"></a>对应拼合路径</h3><p>这个就比较简单了, 分奇偶列模拟S型路径每前进一格求一次对应迂回路径, 需要注意除最后一列外每列两格中有一个对应的迂回路径需要再补上最后一格</p>
+<hr>
+<h2 id="官方题解（英语）"><a href="#官方题解（英语）" class="headerlink" title="官方题解（英语）"></a>官方题解（英语）</h2><p>Let’s first consider the possible paths across the grid that visit all cells. You can immediately think of two of them. The first one is: go right to the wall, turn into the other row and return. Let’s call it a hook. The second one is: go down, go right, go up, go right and so on. Let’s call it a snake.</p>
+<p>Turns out, these two are basically the two extremes of all paths. You can start with a snake and turn into a hook when you wish. You can see that once you move right twice in a row, you can only continue with a hook. And as long as you didn’t move right twice, you are just doing a snake.</p>
+<p>Let’s fix some path across the grid. What will its minimum time be? Calculate it iteratively. If you want to enter the next cell, and it’s still locked, wait until it isn’t. So there are some seconds of waiting (possibly, zero) before each cell.</p>
+<p>However, why not instead do the following. Let’s calculate the sum of waiting time required and wait for that amount of seconds before starting to move. All cells will be visited at the same time as before or even later. Thus, they will surely be unlocked if they were in the original plan.</p>
+<p>So the goal is to calculate the minimum amount of time required to wait in the start, then add the movement time to it.</p>
+<p>Once again, the path is fixed. Let the k-th cell of the path be (xk,yk). If you start after waiting for t seconds, then you reach the k-th cell at time t+k (k is 1-indexed). Thus, the k-th cell should have a(xk,yk)≤t+k−1. If all cells satisfy this condition, then the path can be done after waiting for t seconds at the start.</p>
+<p>Let’s rewrite it into t≥a(xk,yk)−k+1. So, the condition tells us that t should be greater or equal than this value for all cells. In other words, t should be greater or equal than the maximum of the values over all cells.</p>
+<p>Study the formula. Imagine we have some path with a known length and want to append a cell to it. That’s pretty simple. Just update the maximum with the value with the corresponding cell and increase the length.</p>
+<p>What if we wanted to prepend a cell to it? Turns out, it’s not that hard as well. Every cell in the path gets its value k increased by 1. From the formula, you can see that this actually decreases the value of each cell by 1. So the maximum decreases by 1 as well. The only thing left is to update the maximum with the value of the new first cell. Well, and increase the length again.</p>
+<p>Finally, let’s learn how to choose the best path. We can iterate over the length of the snake part. The hook part is determined uniquely.</p>
+<p>It’s easy to maintain the maximum on the snake. Just append the new cell to the path.</p>
+<p>How to glue up the hook part to that?</p>
+<p>Well, actually, realize that the formula allows us to glue up two paths into one. Let path 1 have length n1 and maximum mx1 and path 2 have length n2 and maximum mx2. To make path 2 start after path 1, we just decrease its maximum by n1. The resulting path has length n1+n2 and maximum max(mx1,mx2−n1).</p>
+<p>Let’s look closer into what the hooks look like. They start in some column j, traverse all the way right, then left up to the same column j. If the snake part took both cells in its last column, then that’s it. Otherwise, the hook has to take the final cell in the last column -— column j−1.</p>
+<p>If we manage to precalculate something for hooks that start in some column j and end in column j, then we will be able to use that. Appending the final cell is not a hard task, since we know its index in the path (k&#x3D;2⋅m).</p>
+<p>Let su(i,j) be the waiting time required for a hook that starts in cell (i,j) and ends in a cell (3−i,j) as if the path started with the hook (cell (i,j) is the first one).</p>
+<p>su(i,j) can be calculated from su(i,j)+1. Prepend it with a cell (i,j) and append it with a cell (3−i,j).</p>
+<p>The only thing left is to find the best answer. I found the most convenient to start with a snake of length 1 (only cell (1,1)) and progress it two steps at the time:</p>
+<p>update the answer;</p>
+<p>progress the snake to the other cell of the current column;</p>
+<p>update the answer;</p>
+<p>progress the snake into the next column.</p>
+<p>Overall complexity: O(m) per testcase.</p>
+<h2 id="官方代码"><a href="#官方代码" class="headerlink" title="官方代码"></a>官方代码</h2><p>动态规划一般难点不在代码上, 这里需要注意其下标从0开始, 而题解从1开始, 式子稍有不同, 边界条件特殊处理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">INF = <span class="number">2</span> * <span class="number">10</span>**<span class="number">9</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">int</span>(<span class="built_in">input</span>())):</span><br><span class="line">	m = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">	a = [[<span class="built_in">int</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">input</span>().split()] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>)]</span><br><span class="line">	su = [[-INF <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m + <span class="number">1</span>)] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>)]</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">		<span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">			su[i][j] = <span class="built_in">max</span>(su[i][j + <span class="number">1</span>] - <span class="number">1</span>, a[i][j], a[i ^ <span class="number">1</span>][j] - (<span class="number">2</span> * (m - j) - <span class="number">1</span>))</span><br><span class="line">	pr = a[<span class="number">0</span>][<span class="number">0</span>] - <span class="number">1</span></span><br><span class="line">	ans = INF</span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">		jj = j &amp; <span class="number">1</span></span><br><span class="line">		ans = <span class="built_in">min</span>(ans, <span class="built_in">max</span>(pr, su[jj][j + <span class="number">1</span>] - <span class="number">2</span> * j - <span class="number">1</span>, a[jj ^ <span class="number">1</span>][j] - <span class="number">2</span> * m + <span class="number">1</span>)) <span class="comment"># update the answer</span></span><br><span class="line">		pr = <span class="built_in">max</span>(pr, a[jj ^ <span class="number">1</span>][j] - <span class="number">2</span> * j - <span class="number">1</span>) <span class="comment"># progress the snake to the other cell of the current column</span></span><br><span class="line">		ans = <span class="built_in">min</span>(ans, <span class="built_in">max</span>(pr, su[jj ^ <span class="number">1</span>][j + <span class="number">1</span>] - <span class="number">2</span> * j - <span class="number">2</span>)) <span class="comment"># update the answer</span></span><br><span class="line">		<span class="keyword">if</span> j &lt; m - <span class="number">1</span>:</span><br><span class="line">			pr = <span class="built_in">max</span>(pr, a[jj ^ <span class="number">1</span>][j + <span class="number">1</span>] - <span class="number">2</span> * j - <span class="number">2</span>) <span class="comment"># progress the snake into the next column</span></span><br><span class="line">	<span class="built_in">print</span>(ans + <span class="number">2</span> * m)</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Guo12181</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/08/06/solution-7/">http://example.com/2022/08/06/solution-7/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Blog of Guo12181</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%80%9D%E7%BB%B4/">思维</a><a class="post-meta__tags" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></div><div class="post_share"><div class="social-share" data-image="/img/158976489.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/07/18/solution-6/"><img class="next-cover" src="/img/386.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">The Enchanted Forest 题解</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/07/17/solution-4/" title="Directional Increase 题解"><img class="cover" src="/img/1547905921224.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-17</div><div class="title">Directional Increase 题解</div></div></a></div><div><a href="/2022/07/18/solution-5/" title="awoo's Favorite Problem 题解"><img class="cover" src="/img/1659188955332.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-18</div><div class="title">awoo's Favorite Problem 题解</div></div></a></div><div><a href="/2022/07/18/solution-6/" title="The Enchanted Forest 题解"><img class="cover" src="/img/386.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-18</div><div class="title">The Enchanted Forest 题解</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/650ef39e1a171ec1.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Guo12181</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://fglcn.xyz/" target="_blank" title=""><i class="fa fa-compass"></i></a><a class="social-icon" href="https://guo12181.netlify.app/" target="_blank" title=""><i class="fa fa-plane"></i></a><a class="social-icon" href="https://github.com/Guo12181" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Guo12181@126.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">电脑端特效最佳 点击飞机图标前往高速站点 侧边小工具支持留言</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8E%9F%E6%96%87"><span class="toc-number">1.</span> <span class="toc-text">题目原文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Input"><span class="toc-number">1.1.</span> <span class="toc-text">Input</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output"><span class="toc-number">1.2.</span> <span class="toc-text">Output</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Example"><span class="toc-number">1.3.</span> <span class="toc-text">Example</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%A4%A7%E6%84%8F"><span class="toc-number">2.</span> <span class="toc-text">题目大意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%89%8D"><span class="toc-number">3.1.</span> <span class="toc-text">事前</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E5%85%A5%E7%82%B9"><span class="toc-number">3.2.</span> <span class="toc-text">切入点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E8%87%B4%E6%80%9D%E8%B7%AF"><span class="toc-number">3.3.</span> <span class="toc-text">大致思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E8%80%97%E6%97%B6%E8%AE%A1%E7%AE%97"><span class="toc-number">3.4.</span> <span class="toc-text">路径耗时计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%BC%E6%8E%A5%E8%B7%AF%E5%BE%84"><span class="toc-number">3.5.</span> <span class="toc-text">拼接路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E6%8E%A8%E6%B1%82%E8%BF%82%E5%9B%9E%E8%B7%AF%E5%BE%84"><span class="toc-number">3.6.</span> <span class="toc-text">递推求迂回路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E5%BA%94%E6%8B%BC%E5%90%88%E8%B7%AF%E5%BE%84"><span class="toc-number">3.7.</span> <span class="toc-text">对应拼合路径</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3%EF%BC%88%E8%8B%B1%E8%AF%AD%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">官方题解（英语）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E4%BB%A3%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">官方代码</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/08/06/solution-7/" title="Robot in a Hallway 题解（补题）">Robot in a Hallway 题解（补题）</a><time datetime="2022-08-06T04:32:19.000Z" title="发表于 2022-08-06 12:32:19">2022-08-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/07/18/solution-6/" title="The Enchanted Forest 题解">The Enchanted Forest 题解</a><time datetime="2022-07-18T04:32:19.000Z" title="发表于 2022-07-18 12:32:19">2022-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/07/18/solution-5/" title="awoo's Favorite Problem 题解">awoo's Favorite Problem 题解</a><time datetime="2022-07-18T02:03:46.000Z" title="发表于 2022-07-18 10:03:46">2022-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/07/17/solution-4/" title="Directional Increase 题解">Directional Increase 题解</a><time datetime="2022-07-17T11:17:22.000Z" title="发表于 2022-07-17 19:17:22">2022-07-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/04/08/vlan/" title="云服务器辅助内网穿透测试成功">云服务器辅助内网穿透测试成功</a><time datetime="2022-04-08T00:16:34.000Z" title="发表于 2022-04-08 08:16:34">2022-04-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Guo12181</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script>(function(d, w, c) {
+    w.ChatraID = 'hCmCEiAoG6x9776J7';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (true) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (true) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
