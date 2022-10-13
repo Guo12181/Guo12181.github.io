@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>aaaaaaaaaaA heH heH nuN 题解 | Blog of Guo12181</title><meta name="keywords" content="拼凑,二项式定理"><meta name="author" content="Guo12181"><meta name="copyright" content="Guo12181"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="整理截图相册想起来之前写过的一道好题(臭题)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="aaaaaaaaaaA heH heH nuN 题解">
+<meta property="og:url" content="http://example.com/2022/10/13/solution-8/index.html">
+<meta property="og:site_name" content="Blog of Guo12181">
+<meta property="og:description" content="整理截图相册想起来之前写过的一道好题(臭题)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/10/13/solution-8/sol-8.jpg">
+<meta property="article:published_time" content="2022-10-13T05:24:58.000Z">
+<meta property="article:modified_time" content="2022-10-13T08:58:27.525Z">
+<meta property="article:author" content="Guo12181">
+<meta property="article:tag" content="拼凑">
+<meta property="article:tag" content="二项式定理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/10/13/solution-8/sol-8.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/10/13/solution-8/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'aaaaaaaaaaA heH heH nuN 题解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-13 16:58:27'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/650ef39e1a171ec1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/2022/10/13/solution-8/sol-8.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Blog of Guo12181</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">aaaaaaaaaaA heH heH nuN 题解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-13T05:24:58.000Z" title="发表于 2022-10-13 13:24:58">2022-10-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-13T08:58:27.525Z" title="更新于 2022-10-13 16:58:27">2022-10-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="aaaaaaaaaaA heH heH nuN 题解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://codeforces.com/gym/103743/problem/K">原题链接</a></p>
+<h2 id="题目原文"><a href="#题目原文" class="headerlink" title="题目原文"></a>题目原文</h2><p>Vasily Tadokorov is a stringologist. He thinks a string is fragrant if it can be divided into two parts: nunhehheh as the prefix and a number of (excluding 0) a as the suffix. For example, nunhehhehaaaaaa is fragrant, but nunhehheh and nunhehhehoooaaa are not fragrant.</p>
+<p>Today Vasily Tadokorov has some strings consisting of lowercase English letters. For each string, he wants to know how many subsequences of this string are fragrant. A string <strong>a</strong> is a subsequence of a string <strong>b</strong> if <strong>a</strong> can be obtained from <strong>b</strong> by deletion of several (including 0) characters.</p>
+<p>The above is a problem of string that Vasily came up with. As we know, a problem usually has several examples for better understanding. However, Vasily gets buried in making some fragrant examples. After 2000 years, he finally makes two perfect examples as follows.</p>
+<p>Example 1:</p>
+<ul>
+<li>Input: nunhehhehahaahahahahahahaahaahahahahha</li>
+<li>Output: <strong>114514</strong></li>
+</ul>
+<p>Example 2:</p>
+<ul>
+<li>Input: nunhehhehhehhahaahahahaahaahahaaaahaa</li>
+<li>Output: <strong>1919810</strong></li>
+</ul>
+<p>Vasily is not clever enough. He doesn’t want to work for another 2000 years, so he asks you for help. He gives you T tasks, each of which contains an integer n, and you should construct a string consisting of only lowercase English letters that has exactly n fragrant subsequences.</p>
+<p>Input</p>
+<ul>
+<li><p>The first line contains an integer T (1≤T≤1000), denoting the number of tasks.</p>
+</li>
+<li><p>Each of the next T lines contains an integer n (0≤n≤1e9).</p>
+</li>
+</ul>
+<p>Output</p>
+<ul>
+<li>For each test case, output one string consisting of only lowercase English letters in a single line indicating the answer. You need to ensure that the sum of the length over all the output strings does not exceed 1e6. It can be proved that a solution always exists. If there are multiple solutions, print any.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Example</span><br><span class="line"></span><br><span class="line">input:</span><br><span class="line"></span><br><span class="line">2</span><br><span class="line">114514</span><br><span class="line">1919810</span><br><span class="line"></span><br><span class="line">output:</span><br><span class="line"></span><br><span class="line">nunhehhehahaahahahahahahaahaahahahahha</span><br><span class="line">nunhehhehhehhahaahahahaahaahahaaaahaa</span><br></pre></td></tr></table></figure>
+
+<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>给定t组数据, 每组一个数n, 要求生成一个恰好有n个合法子串的母串, 当且仅当子串是”nunhehheh”后面跟着<strong>至少一个</strong>‘a’的字符串时合法, 如”nunhehhehaaaaaa”合法, “nunhehheh”不合法, <strong>生成的母串长度不能超过1e6</strong>.</p>
+<p>注意子串的定义, <strong>就算两个子串字母和排列完全一致但某位置上保留了原串不同位置上的相同字母也算两个不同的子串</strong>.</p>
+<p>这道题不难, 让人印象深刻的是其富有inm特色的原文题意(大喜)</p>
+<p>考虑以下情况:</p>
+<ol>
+<li>将合法子串前缀拆成”nunhehhe”和最后一个字母”h”, 只考虑”h”后面的a的数量x, 由子串产生规则及二项式定理可知所能产生的子串数量为( 2^x-1 )</li>
+<li>在”nunhehhehaaaaaa”倒数第三个’a’前插入一个’h’变为”nunhehhehaaahaaa”, 原先合法子串数量( 2^6-1 )变为( ( 2^6-1 ) + ( 2^3-1 ) )</li>
+<li>在”nunhehhehaaaaaa”倒数第三个’a’前插入两个’h’变为”nunhehhehaaahhaaa”, 原先合法子串数量( 2^6-1 )变为( ( 2^6-1 ) + <strong>2</strong>*( 2^3-1 ) )</li>
+</ol>
+<p>不难发现, 由于可选择”nunhehhe”后任意一个h开始子串, 在适当的位置插入’h’可增加合法子串数量, 可以用一种<strong>类似</strong>二进制拼凑的方法在凑齐n个子串<strong>同时尽量减少子串长度</strong>, 但要注意这里不是真正的二进制拼凑(拼凑块不符合2^k大小, 且拼凑过程中可能产生需要二倍的情况).</p>
+<p>具体实现见代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t;</span><br><span class="line">vector&lt;LL&gt; v;</span><br><span class="line">LL n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>&#123; <span class="comment">// 初始化各个拼凑块大小</span></span><br><span class="line">    LL x=<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">36</span>;i++,x*=<span class="number">2</span>)&#123;</span><br><span class="line">        v.<span class="built_in">push_back</span>(x<span class="number">-1</span>); <span class="comment">// 由二项式定理可知, 末尾的k个&quot;a&quot;能够提供(2^k-1)个合法子串</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">init</span>();</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        cin&gt;&gt;n;</span><br><span class="line">        <span class="type">int</span> x=(<span class="built_in">upper_bound</span>(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>(),n)-v.<span class="built_in">begin</span>())<span class="number">-1</span>; <span class="comment">// 找最大的拼凑块位置, 然后从大到小拼凑来减少母串长度(若从小到大会导致h过多进而母串过长, 这与二进制拼凑每块最多拼凑一次不同), 注意是upper_bound -1</span></span><br><span class="line">        string ans=<span class="string">&quot;nunhehhe&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=x;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">            <span class="type">int</span> s=n/v[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;s;j++) ans+=<span class="string">&quot;h&quot;</span>;</span><br><span class="line">            <span class="comment">// 可选择&quot;nunhehhe&quot;后任意一个h开始子串, 因此h的插入可用于分割产生各个拼凑块</span></span><br><span class="line">            <span class="comment">// 因为不是真正的二进制拼凑, 只是借用其思想(实际是2^k-1在拼凑), 所以可能出现这一拼凑块需要*2的情况, 此时接两个h</span></span><br><span class="line">            ans+=<span class="string">&quot;a&quot;</span>; <span class="comment">// 从找到最大拼凑块位置开始, a的数量就已经确定了, 不同之处在于h的分布</span></span><br><span class="line">            n%=v[i];</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Guo12181</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/10/13/solution-8/">http://example.com/2022/10/13/solution-8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Blog of Guo12181</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8B%BC%E5%87%91/">拼凑</a><a class="post-meta__tags" href="/tags/%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%AE%9A%E7%90%86/">二项式定理</a></div><div class="post_share"><div class="social-share" data-image="/2022/10/13/solution-8/sol-8.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/08/06/solution-7/"><img class="next-cover" src="/img/158976489.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Robot in a Hallway 题解（补题）</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/650ef39e1a171ec1.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Guo12181</div><div class="author-info__description">未来ガジェット研究所成员博客</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://fglcn.xyz/" target="_blank" title=""><i class="fa fa-compass"></i></a><a class="social-icon" href="https://guo12181.netlify.app/" target="_blank" title=""><i class="fa fa-plane"></i></a><a class="social-icon" href="https://github.com/Guo12181" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Guo12181@126.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">电脑端特效最佳 点击飞机图标前往高速站点 侧边小工具支持留言</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8E%9F%E6%96%87"><span class="toc-number">1.</span> <span class="toc-text">题目原文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%A4%A7%E6%84%8F"><span class="toc-number">2.</span> <span class="toc-text">题目大意</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/10/13/solution-8/" title="aaaaaaaaaaA heH heH nuN 题解">aaaaaaaaaaA heH heH nuN 题解</a><time datetime="2022-10-13T05:24:58.000Z" title="发表于 2022-10-13 13:24:58">2022-10-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/08/06/solution-7/" title="Robot in a Hallway 题解（补题）">Robot in a Hallway 题解（补题）</a><time datetime="2022-08-06T04:32:19.000Z" title="发表于 2022-08-06 12:32:19">2022-08-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/07/18/solution-6/" title="The Enchanted Forest 题解">The Enchanted Forest 题解</a><time datetime="2022-07-18T04:32:19.000Z" title="发表于 2022-07-18 12:32:19">2022-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/07/18/solution-5/" title="awoo's Favorite Problem 题解">awoo's Favorite Problem 题解</a><time datetime="2022-07-18T02:03:46.000Z" title="发表于 2022-07-18 10:03:46">2022-07-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/07/17/solution-4/" title="Directional Increase 题解">Directional Increase 题解</a><time datetime="2022-07-17T11:17:22.000Z" title="发表于 2022-07-17 19:17:22">2022-07-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Guo12181</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script>(function(d, w, c) {
+    w.ChatraID = 'hCmCEiAoG6x9776J7';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (true) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (true) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
